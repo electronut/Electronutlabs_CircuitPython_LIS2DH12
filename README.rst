@@ -27,40 +27,28 @@ Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://github.com/adafruit/Adafruit_CircuitPython_Bundle>`_.
 
-Installing from PyPI
-=====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
-
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
-   If the library is not planned for PyPI, remove the entire 'Installing from PyPI' section.
-
-On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
-PyPI <https://pypi.org/project/adafruit-circuitpython-lis2dh12/>`_. To install for current user:
-
-.. code-block:: shell
-
-    pip3 install adafruit-circuitpython-lis2dh12
-
-To install system-wide (this may be required in some cases):
-
-.. code-block:: shell
-
-    sudo pip3 install adafruit-circuitpython-lis2dh12
-
-To install in a virtual environment in your current project:
-
-.. code-block:: shell
-
-    mkdir project-name && cd project-name
-    python3 -m venv .env
-    source .env/bin/activate
-    pip3 install adafruit-circuitpython-lis2dh12
-
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the examples folder and be included in docs/examples.rst.
+.. code-block:: python
+
+    import time
+    import board
+    import busio
+    import electronutlabs_lis2dh12
+
+    i2c = busio.I2C(board.SCL, board.SDA)
+    lis2dh12 = electronutlabs_lis2dh12.LIS2DH12_I2C(i2c, address=0x19)
+
+    lis2dh12.range = electronutlabs_lis2dh12.RANGE_2_G
+
+    while True:
+        # Read accelerometer values (in m / s ^ 2).  Returns a 3-tuple of x, y,
+        # z axis values.  Divide them by 9.806 to convert to Gs.
+        x, y, z = [value / electronutlabs_lis2dh12.STANDARD_GRAVITY for value in lis2dh12.acceleration]
+        print("x = %0.3f G, y = %0.3f G, z = %0.3f G" % (x, y, z))
+        # Small delay to keep things responsive but give time for interrupt processing.
+        time.sleep(0.5)
 
 Contributing
 ============

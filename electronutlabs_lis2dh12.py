@@ -33,28 +33,24 @@ Implementation Notes
 
 **Hardware:**
 
-.. todo:: Add links to any specific hardware product page(s), or category page(s). Use unordered list & hyperlink rST
-   inline format: "* `Link Text <url>`_"
+* `ST Microelectronics LIS2DH12 chip
+  <https://www.st.com/en/mems-and-sensors/lis2dh12.html>`_
+* `Electronut Labs Blip <https://docs.electronut.in/blip/>`_
 
 **Software and Dependencies:**
 
 * Adafruit CircuitPython firmware for the supported boards:
   https://github.com/adafruit/circuitpython/releases
 
-.. todo:: Uncomment or remove the Bus Device and/or the Register library dependencies based on the library's use of either.
-
 # * Adafruit's Bus Device library: https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
-# * Adafruit's Register library: https://github.com/adafruit/Adafruit_CircuitPython_Register
 """
 
 # libray is similar to github.com/adafruit/Adafruit_CircuitPython_LIS3DH
 
 # imports
 import time
-import math
 from collections import namedtuple
 import struct
-import digitalio
 
 from micropython import const
 
@@ -100,8 +96,10 @@ STANDARD_GRAVITY = 9.806
 # the named tuple returned by the class
 AccelerationTuple = namedtuple("acceleration", ("x", "y", "z"))
 
+
 class LIS2DH12:
     """Driver base for the LIS2DH12 accelerometer."""
+
     def __init__(self):
         # Check device ID.
         device_id = self._read_register_byte(_REG_WHOAMI)
@@ -163,7 +161,8 @@ class LIS2DH12:
         elif accel_range == RANGE_2_G:
             divider = 16380
 
-        x, y, z = struct.unpack('<hhh', self._read_register(_REG_OUT_X_L | 0x80, 6))
+        x, y, z = struct.unpack(
+            '<hhh', self._read_register(_REG_OUT_X_L | 0x80, 6))
 
         # convert from Gs to m / s ^ 2 and adjust for the range
         x = (x / divider) * STANDARD_GRAVITY
@@ -172,7 +171,6 @@ class LIS2DH12:
 
         return AccelerationTuple(x, y, z)
 
-    
     def _read_register_byte(self, register):
         # Read a byte register value and return it.
         return self._read_register(register, 1)[0]
