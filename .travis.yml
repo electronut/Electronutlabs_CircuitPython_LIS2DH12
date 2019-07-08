@@ -31,7 +31,7 @@ deploy:
   - provider: pypi
     user: adafruit-travis
     password:
-      secure: #-- PASTE ENCRYPTED PASSWORD HERE --#
+      secure: "otxkGaQOe0j7/0n7BD8DY2peBV5eiFO2gYjbi+B3LZecp8msbPntagP0/87g3SJfGjNIUws1JXGCn1Z8q0ddo62dmLqcgyr5VcvPvcY2uQfg+g1vk6O7kyqndQDD7+7d/AED65qfqeZL02U8Hx8BnLGohyQQj+DqjUp+KFoCDU/wLgmrdpmnM2gtrqFIq1qC9uIAwNFuSu1WJAyPhe6CA1qKINYNmXu8FhN+CZbOFJiDCvHUkr4e9ELKqwNaIXH+c7eRUjgK5hEdo3soc4a6TLdZjkhdwUapdERLGpEy8yhKEFMq606//w6hehEgrr5lT+2zNBOryJJXMr7x5vA6QNnyOibQ36aUR/z5nShpJzZGFkOymniRd//3aiS1T15nN/fz7B0bDeU6wmqnFBMN6IP/S1XPClob7beowXLGM4eEuYceDA+wo7yY6TDwx+/ZlE46So/hDqXybpJr8gnYSE4rzFYJAtIA7Rmk8u1ICDo1sx5jpNE4lCACdCPTJHfTj5uVPILOaBwLTPj+9nLEBCopVQic3MDkWRPUzGFY+yx/eWYw6w6E5ea3XpkVtXuyZXKhq0hu13nIxcd00nfN0qPKzZOO4GcSX+Yru9WAb6Q+XlaB/Of3kjTzZtFw82JiO83EKjauFF5aN+5eStFylGiAxahS6RJQAkq/cvosU5U="
     on:
       tags: true
       condition: $DEPLOY_PYPI = "true"
