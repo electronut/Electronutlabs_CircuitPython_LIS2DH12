@@ -1,16 +1,16 @@
 Introduction
 ============
 
-.. image:: https://readthedocs.org/projects/electronutlabs-circuitpython-lis2dh12/badge/?version=latest
-    :target: https://circuitpython.readthedocs.io/projects/lis2dh12/en/latest/
+.. image:: https://readthedocs.org/projects/circuitpython-lis2dh12-library/badge/?version=latest
+    :target: https://circuitpython-lis2dh12-library.readthedocs.io/en/latest/
     :alt: Documentation Status
 
 .. image:: https://img.shields.io/discord/327254708534116352.svg
     :target: https://discord.gg/nBQh6qu
     :alt: Discord
 
-.. image:: https://travis-ci.com/electronut/Electronutlabs_CircuitPython_LIS2DH12.svg?branch=master
-    :target: https://travis-ci.com/electronut/Electronutlabs_CircuitPython_LIS2DH12
+.. image:: https://api.travis-ci.org/electronut/Electronutlabs_CircuitPython_LIS2DH12.svg?branch=master
+    :target: https://travis-ci.org/electronut/Electronutlabs_CircuitPython_LIS2DH12/
     :alt: Build Status
 
 Circuitpython library for LIS2DH12 3-axis low power accelerometer.
